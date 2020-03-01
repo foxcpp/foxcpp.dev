@@ -1,0 +1,29 @@
+<svg class="pfp" viewBox="28 60 221 108">
+    <path style="fill:#eeeeee;stroke:#000000;stroke-width:1.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none" d="M 108.08471,99.265181 28.686343,140.83108 M 108.08471,99.265181 187.73194,139.8355 M 187.23414,60.686038 108.08471,221.4739 M 28.188553,60.686038 108.08471,221.4739 M 28.188553,60.686038 l 0.49779,80.145042 79.398367,80.64282 79.64723,-81.6384 -0.4978,-79.149462 -79.14943,38.579143 z" />
+</svg>
+
+<section>
+    <dl class="contact">
+        <dt>IRC</dt>
+        <dd>foxcpp on <a href="https://freenode.org">freenode</a></dd>
+
+        <dt>Telegram</dt>
+        <dd><a href="https://t.me/foxcpp0">@foxcpp0</a></dd>
+
+        <dt>E-Mail</dt>
+        <dd>fox.cpp at disroot dot org</dd>
+
+        <dt>PGP</dt>
+        <dd><a href="key.asc"><code>34BB2007081396F4</code></a></dd>
+    </dl>
+</section>
+
+<section>
+    <h3>Projects</h3>
+    <dl>
+        <dt><a href="https://github.com/foxcpp/maddy">maddy</a></dt>
+        <dd>
+            Composable all-in-one mail server.
+        </dd>
+    </dl>
+</section>

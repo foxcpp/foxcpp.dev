@@ -5,64 +5,37 @@
 		<meta charset="utf-8">
 		<title>fox.cpp</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="fox.cpp not-really blog website">
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
 		<h1>fox.cpp</h1>
-        <aside>
-            <svg class="pfp" viewBox="28 60 221 108">
-                <path style="fill:#eeeeee;stroke:#000000;stroke-width:1.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none" d="M 108.08471,99.265181 28.686343,140.83108 M 108.08471,99.265181 187.73194,139.8355 M 187.23414,60.686038 108.08471,221.4739 M 28.188553,60.686038 108.08471,221.4739 M 28.188553,60.686038 l 0.49779,80.145042 79.398367,80.64282 79.64723,-81.6384 -0.4978,-79.149462 -79.14943,38.579143 z" />
-            </svg>
-
-            <dl class="contact">
-                <dt>IRC</dt>
-                <dd>foxcpp on <a href="https://freenode.org">freenode</a></dd>
-
-                <dt>Telegram</dt>
-                <dd><a href="https://t.me/foxcpp0">@foxcpp0</a></dd>
-
-                <dt>E-Mail</dt>
-                <dd>fox.cpp at disroot dot org</dd>
-
-                <dt>PGP</dt>
-                <dd><a href="key.asc"><code>34BB2007081396F4</code></a></dd>
-            </dl>
-
-            <h3 id="projects">Projects</h3>
-            <dl>
-                <dt><a href="https://github.com/foxcpp/maddy">maddy</a></dt>
-                <dd>
-                    Composable all-in-one mail server.
-                </dd>
-            </dl>
-        </aside>
-		<main>
-			<h2 id="articles">Articles</h2>
-			<p>
-				I'm not a good blog writer, but someday there will be something.
-			</p>
-            <h3 id="article-drafts">Article drafts</h3>
-            <p>
-                These are not finished articles and I hope someday I will go
-                back to them and complete them. Feel free to suggest
-                improvements at <a href="https://github.com/foxcpp/foxcpp.dev">GitHub</a>.
-
+        <main>
+            <aside>
+                {{.Include "templates/sidebar.tpl"}}
+            </aside>
+            <contents>
+                <h2 id="articles">Articles</h2>
+                <p>
+                    I'm not a good blog writer, but someday there will be something.
+                </p>
+                <h3 id="article-drafts">Article drafts</h3>
+                <p>
+                    These are not finished articles and I hope someday I will go
+                    back to them and complete them. Feel free to suggest
+                    improvements at <a href="https://github.com/foxcpp/foxcpp.dev">GitHub</a>.
+                </p>
                 <dl>
                     <dt><a href="drafts/security-and-insecurity-of-email.md">Security and insecurity of e-mail</a></dt>
                     <dd>
                         Purely technical article on how secure modern e-mail is.
                     </dd>
                 </dl>
-            </p>
+            </contents>
 		</main>
+        <hr>
         <footer>
-            <hr>
-            Copyright (c) 2019-2020 fox.cpp
-            <img class="license-icon" src="cc-by-4.0.svg">
-            |
-            <a href="bitcoin:1NAUyyCvsH1c7ai78ZXFSFesa7xj1P2fP3">Make my day slightly better</a>
-            |
-            Check out <a href="https://hexawolf.dev">hexawolf.dev</a> and <a href="https://emersion.fr">emersion.fr</a>
+            {{.Include "templates/footer.tpl"}}
         </footer>
 	</body>
 </html>
