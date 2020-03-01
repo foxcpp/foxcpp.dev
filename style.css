@@ -9,8 +9,72 @@ body {
 }
 
 main {
-	padding-left: 15px;
 	max-width: 700px;
+}
+
+aside {
+    display: block;
+}
+
+.contact {
+    padding-top: 15px;
+}
+.contact > dt {
+    padding-top: 7px;
+    font-weight: bold;
+}
+.contact > dd {
+    margin-left: 0px;
+}
+
+@media only screen and (width < 650px) {
+    .pfp {
+        display: none;
+    }
+    main {
+        position: static;
+        padding-left: 15px;
+    }
+    aside {
+        position: static;
+        width: 100%;
+        box-sizing: border-box;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+@media only screen and (width >= 650px) {
+    .pfp {
+        display: block;
+        width: 150px;
+        height: 150px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    main {
+        position: absolute;
+        left: 280px;
+    }
+    aside {
+        position: absolute;
+        left: 15px;
+        width: 250px;
+    }
+    #projects {
+        padding-top: 25px;
+    }
+    footer {
+        position: absolute;
+        display: block;
+        width: 100%;
+        bottom: 5px;
+    }
+}
+
+
+ul {
+    padding-left: 15px;
 }
 
 h1 a {
@@ -32,4 +96,8 @@ h1 {
 	color: #eee;
 	font-size: 1.5em;
 	background-color: #2d524d;
+}
+
+.license-icon {
+    vertical-align: middle;
 }
