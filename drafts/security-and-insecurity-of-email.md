@@ -21,14 +21,16 @@ security.  Several mechanisms were developed to improve that. They, however,
 are still limited to the original trust model. That is, they authenticate one
 server to another, not even the whole chain if more than 2 servers participate
 in transmission (in the most basic case there are only 2 parties and 2 servers
-involved, but that might be different for many othese scenarios). 
+involved, but that might be different for many other scenarios). 
 
 To provide such end-to-end authentication additional protocols must be used on
-top of e-mail stack, such as S/MIME or PGP. Even then, there is a big amount of
-metadata transferred in plaintext. RFC 5322 header section is full of
-interesting things including recipient, sender addresses and timestamps added
-by each server. It is often as precious as the contents of the message
-themselves. ["We kill people based on metadata"][wkpbm], remember?.
+top of e-mail stack, such as S/MIME or PGP. But a rare person uses PGP on daily
+basis, right? UI of implementations is unintuitive, key management is hard and
+so on. Even then, there is a big amount of metadata transferred in plaintext.
+RFC 5322 header section is full of interesting things including recipient,
+sender addresses and timestamps added by each server. It is often as precious
+as the contents of the message themselves. 
+["We kill people based on metadata"][wkpbm], remember?.
 
 Even without RFC 5322, there is at least SMTP envelope that includes recipient
 and sender address. [Some systems][ricochet] manage to deliver messages without
@@ -36,9 +38,12 @@ knowing who is talking to whom, possibly using transient or meaningless
 identifiers. This is not possible in e-mail where these familar strings with
 `@` in the middle are central to the protocol.
 
-So, once again. E-mail requires you to trust the server you use. System
-administrator with malicious intent can easily read all your messages no matter
-what.
+To put that all in a perspective: Lets say you are a whistleblower and you want
+to tell press about terrible things happening in your company. You use OpenPGP.
+After all, its [web site](https://openpgp.org) fills you with sense of
+confidence and security. You send a message to the journalist using work e-mail
+system. What might go wrong? PGP is secure! Well... You are doomed. Admin of
+that e-mail system knows what you were doing. That is enough.
 
 ## Fragile server-server encryption
 
@@ -69,19 +74,86 @@ everything will be in a better shape. But not now, just not now.
 
 ## "Encrypted" mail services & web clients
 
-TODO
+All that sounds pretty scary. But [ProtonMail] must save me. Their landing page 
+proudly says "Secure Email Based in Switzerland".
 
-## Archival vs Perfect Forward Secrecy
+While I appreciate that they actually do [pretty well][mailsec-check] in terms
+of e-mail security:
+```
+$ ./mailsec-check protonmail.com
+-- Source forgery protection
+[+] DKIM: 	 _domainkey subdomain present; DNSSEC-signed; 
+[+] SPF: 	 present; strict; DNSSEC-signed; 
+[+] DMARC: 	 present; strict; DNSSEC-signed; 
 
-TODO
+-- TLS enforcement
+[+] MTA-STS: 	 enforced; all MXs match policy; 
+[+] DANE: 	 present for all MXs; DNSSEC-signed; no validity check done; 
 
-## On Pretty Good Privacy (PGP)
+-- DNS consistency
+[+] FCrDNS: 	 all MXs have forward-confirmed rDNS
+[+] DNSSEC: 	 A/AAAA and MX records are signed;
+```
+But efforts of Protonmail developers cannot make the underlying protocol secure.
+SMTP is still SMTP. Messages cannot stay magically encrypted if they exit the
+Protonmail servers. 
 
-TODO 
+Two important details to keep in mind even if messages do not leave ProtonMail
+servers. First, ProtonMail still knows who is talking to whom. As shown
+eariler, this is already enough to cause doom in many cases. Second, ProtonMail
+is a proprietary platform without open API and the only clients available are
+provided developed and maintained by ProtonMail people. Nothing is preventing
+them from inserting a backdoor to push unencrypted messages somewhere else **at
+any time**. In case of web client most people will probably use it will be
+completely invisible, not even a prompt like "new version of client is
+downloaded". Just your messages will be silently sent unencrypted somewhere
+else.
+
+That is, ProtonMail is not getting anywhere better than a regular server with 
+encrypted storage.
+
+Of course ProtonMail is just one example, there are [other][tutanota]
+[similar][startmail] services.
+
+No matter what brand is your favorite. The trust model of SMTP will keep
+haunting you. There is not magic pixie here that makes e-mail secure.
+
+## Archival, Perfect Forward Secrecy and Not Pretty Good Privacy (PGP)
+
+Now that is depressing, right? Our only hope left is PGP. Unfortunately, it is
+not a new technology and it definitely does not account for all research that
+was made in cryptography the last three decades.
+
+Numerious problems were identitied in the OpenPGP standard, most of them were
+patched or otherwise workarounded. There were severe vulnerabilities in
+implementations like EFAIL but they do not affect the protocol itself So, in
+general, an up-to-date PGP implementation (e.g. [GnuPG][gpg]) should stay
+secure. Except that it is not more secure than it was in 90s. We can do much
+better today. 
+
+PGP fundamentally was built with e-mail in mind. Notably, it has to provide a
+way to encrypt the message at any time in future since e-mail messages are
+often archived for rather long periods of time. This conflicts with the goal to
+provide the [Perfect Forward Secrecy][pfs] property. That is, even if long-term
+keys are compromised, previous converations stay secret.
+
+<hr>
 
 **TL;DR** E-mail was never designed to provide end-to-end privacy and/or
 integrity. Several design decisions at various levels conflict with the goal to
 provide maximum security.
+
+## What do I do?
+
+E-mail is not going anywhere in the next decade. It is too deeply integrated in
+the worldwide ecosystem. From my experience, you live a life without having a
+phone number, without having the phone itself but you cannot live in the modern
+world without a e-mail address. It is used for everything.
+
+Many things could be improved and they will be get improved eventually. I am
+not aware of any effort to replace what was initially known to be Internet
+Mail while providing the same features. A paradigm shift is needed to achieve
+better security.
 
 [RFC 821]: https://tools.ietf.org/html/rfc821
 [wkpbm]: https://www.nybooks.com/daily/2014/05/10/we-kill-people-based-metadata/
@@ -91,3 +163,9 @@ provide maximum security.
 [sec17]: https://securepki.org/sec17.html
 [eff-starttls-downgrade]: https://www.eff.org/deeplinks/2014/11/starttls-downgrade-attacks
 [starttls-everywhere]: https://starttls-everywhere.org
+[ProtonMail]: https://protonmail.com
+[mailsec-check]: https://github.com/foxcpp/mailsec-check
+[tutanota]: https://tutanota.com
+[startmail]: https://startmail.com
+[gpg]: https://gnupg.org
+[pfs]: https://en.wikipedia.org/wiki/Forward_secrecy
