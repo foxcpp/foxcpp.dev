@@ -13,6 +13,9 @@
         <dt>E-Mail</dt>
         <dd>fox.cpp at disroot dot org</dd>
 
+        <dt>Mastodon</dt>
+        <dd><a rel="me" href="https://puppo.space/@foxcpp">@foxcpp@puppo.space</a></dd>
+
         <dt>PGP</dt>
         <dd><a href="key.asc"><code>34BB2007081396F4</code></a></dd>
     </dl>
