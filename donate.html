@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<!-- What are you peeking at? Yes, that's it, HTML5 and not a single line of JS. http://motherfuckingwebsite.com/ -->
+	<head>
+		<meta charset="utf-8">
+		<title>fox.cpp</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="fox.cpp not-really blog website">
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<h1>fox.cpp</h1>
+        <main>
+            <aside>
+                {{.Include "templates/sidebar.tpl"}}
+            </aside>
+            <contents>
+                <p>
+                    Thanks for deciding to support my work. Sadly, I cannot offer much
+                    in return other than varying amount of my free time being invested
+                    into my own projects and open source contributions.
+
+                    So, anyway, your options are...
+                </p>
+                <dl>
+                    <dt><a href="https://www.paypal.me/foxcpp">PayPal</a></dt>
+                    <dd>
+                        One-time gift? :)
+                    </dd>
+                    <dt><a href="https://liberapay.com/foxcpp/">Liberapay</a></dt>
+                    <dd>
+                        Feel in love with my work? :)<br>
+                        P.S. Stripe not available in my country.
+                    </dd>
+                    <dt><a href="bitcoin:1NAUyyCvsH1c7ai78ZXFSFesa7xj1P2fP3">Bitcoin</a></dt>
+                    <dd>
+                        You can also drop some BTC. But well, it has undefined
+                        legal status in my country so you do not want to prefer
+                        that, thanks.
+
+                        <pre>1NAUyyCvsH1c7ai78ZXFSFesa7xj1P2fP3</pre>
+                    </dd>
+                </dl>
+                <p>
+                    Contact me if you want to discuss other options.
+                </p>
+            </contents>
+		</main>
+        <hr>
+        <footer>
+            {{.Include "templates/footer.tpl"}}
+        </footer>
+	</body>
+</html>
