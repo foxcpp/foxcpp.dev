@@ -1,7 +1,7 @@
 ---
 template: article
 title: The right way to use go-sqlite3
-description: 'Why go-sqlite3 is spitting out "database is locked" errors and what to do about it.'
+description: Why go-sqlite3 is spitting out 'database is locked' errors and what to do about it.
 date: 2020-10-10
 ---
 
