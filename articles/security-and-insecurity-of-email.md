@@ -1,6 +1,8 @@
 ---
 template: article
 title: Security and insecurity of e-mail
+description: Rant about emails messy threat model. What SPF/DKIM/etc do and do not. Why we can do better than PGP.
+date: 2020-06-23
 ---
 
 ## (Un)Trustworthy SMTP

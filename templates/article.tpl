@@ -4,8 +4,14 @@
         <head>
                 <meta charset="utf-8">
                 <title>{{.Doc.title}}</title>
-                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                <meta property="og:title" content="{{.Doc.title}}" />
+                <meta property="og:description" content="{{.Doc.description}}" />
+                <meta property="og:site_name" content="foxcpp.dev" />
+                <meta property="og:type" content="article" />
+                <meta property="og:article:published_time" content="{{.Doc.date}}" />
                 <meta name="description" content="{{.Doc.description}}">
+
+                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
                 <link rel="stylesheet" href="/style.css">
 
                 <style>
