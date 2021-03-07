@@ -12,18 +12,18 @@
 		<h1>fox.cpp</h1>
 		<main>
 			<aside>
-				{{.Include "templates/sidebar.tpl"}}
+				{{include "/includes/sidebar.html"}}
 			</aside>
 
 			<contents>
 				<h2 id="articles">Articles</h2>
 				<dl>
-					<dt>[2020-10-10] <a href="articles/the-right-way-to-use-go-sqlite3.md">The right way to use go-sqlite3</a></dt>
+					<dt>[2020-10-10] <a href="articles/the-right-way-to-use-go-sqlite3">The right way to use go-sqlite3</a></dt>
 					<dd>
 						Why go-sqlite3 is spitting out "database is locked" errors and what to do about it.
 					</dd>
 					
-					<dt>[2020-06-23] <a href="articles/security-and-insecurity-of-email.md">Security and insecurity of e-mail</a></dt>
+					<dt>[2020-06-23] <a href="articles/security-and-insecurity-of-email">Security and insecurity of e-mail</a></dt>
 					<dd>
 						Rant about emails messy threat model. What SPF/DKIM/etc do and do not. Why we can do better than PGP.
 					</dd>
@@ -32,7 +32,7 @@
 		</main>
 		<hr>
 		<footer>
-			{{.Include "templates/footer.tpl"}}
+			{{include "/includes/footer.html"}}
 		</footer>
 	</body>
 </html>

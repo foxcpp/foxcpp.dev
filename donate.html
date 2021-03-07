@@ -3,7 +3,7 @@
 	<!-- What are you peeking at? Yes, that's it, HTML5 and not a single line of JS. http://motherfuckingwebsite.com/ -->
 	<head>
 		<meta charset="utf-8">
-		<title>fox.cpp</title>
+		<title>fox.cpp / Donate</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="fox.cpp not-really blog website">
 		<link rel="stylesheet" href="style.css">
@@ -12,7 +12,7 @@
 		<h1>fox.cpp</h1>
         <main>
             <aside>
-                {{.Include "templates/sidebar.tpl"}}
+                {{include "includes/sidebar.html"}}
             </aside>
             <contents>
                 <p>
@@ -52,7 +52,7 @@
 		</main>
         <hr>
         <footer>
-            {{.Include "templates/footer.tpl"}}
+            {{include "includes/footer.html"}}
         </footer>
 	</body>
 </html>

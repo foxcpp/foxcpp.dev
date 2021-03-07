@@ -1,15 +1,22 @@
+{{$pathParts := splitList "/" .OriginalReq.URL.Path}}
+{{$markdownFilename := default "index" (slice $pathParts 2 | join "/")}}
+{{$markdownFilePath := printf "/articles/%s.md" $markdownFilename}}
+{{$markdownFile := (include $markdownFilePath | splitFrontMatter)}}
+{{$title := default $markdownFilename $markdownFile.Meta.title}}
+{{$date := default "1980-01-01" $markdownFile.Meta.date}}
+{{$description := default "" $markdownFile.Meta.description}}
 <!DOCTYPE html>
 <html lang="en">
         <!-- What are you peeking at? Yes, that's it, HTML5 and not a single line of JS. http://motherfuckingwebsite.com/ -->
         <head>
                 <meta charset="utf-8">
-                <title>{{.Doc.title}}</title>
-                <meta property="og:title" content="{{.Doc.title}}" />
-                <meta property="og:description" content="{{.Doc.description}}" />
+                <title>fox.cpp / {{$title}}</title>
+                <meta property="og:title" content="{{$title}}" />
+                <meta property="og:description" content="{{$description}}" />
                 <meta property="og:site_name" content="foxcpp.dev" />
                 <meta property="og:type" content="article" />
-                <meta property="og:article:published_time" content="{{.Doc.date}}" />
-                <meta name="description" content="{{.Doc.description}}">
+                <meta property="og:article:published_time" content="{{$date}}" />
+                <meta name="description" content="{{$description}}">
 
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
                 <link rel="stylesheet" href="/style.css">
@@ -23,20 +30,20 @@
                 </style>
         </head>
         <body>
-                <h1><a href="/">fox.cpp</a> / {{.Doc.title}}</h1>
+                <h1><a href="/">fox.cpp</a> / {{$title}}</h1>
                 <main>
                     <aside>
-                        {{.Include "templates/sidebar.tpl"}}
+                        {{include "includes/sidebar.html"}}
                     </aside>
                     <contents>
                         <article>
-                            {{.Doc.body}}
+                            {{markdown $markdownFile.Body}}
                         </article>
                     </contents>
                 </main>
                 <hr>
                 <footer>
-                    {{.Include "templates/footer.tpl"}}
+                    {{include "includes/footer.html"}}
                 </footer>
         </body>
 </html>
